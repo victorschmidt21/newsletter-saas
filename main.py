@@ -1,5 +1,5 @@
 from typing import Union
-
+from agent_basic import getArticlesIa
 from fastapi import FastAPI
 import requests
 app = FastAPI()
@@ -22,7 +22,12 @@ def getArticles():
     data2 = response2.json()
     data.extend(data2)
 
-    articles = list(filter(filterTitle, data))
+    articlesFilter = list(filter(filterTitle, data))
+    articlesTeste = []
+    for i in articlesFilter:
+        articlesTeste.append(i['title'])
+    sentence = "\n".join(articlesTeste)
+    articles = getArticlesIa(sentence)
     return articles
 
 
