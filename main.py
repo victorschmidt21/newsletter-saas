@@ -6,7 +6,6 @@ import schedule
 import time
 
 def articles():
-    print("passou aqui")
     articlesFilter = getArticles()
     articlesTeste = []   
     for i in articlesFilter:
