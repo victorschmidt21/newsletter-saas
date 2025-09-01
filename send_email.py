@@ -14,7 +14,7 @@ smtp_password = os.getenv("SMTP_PASSWORD")
 
 def sendEmails(body):
     
-    to_addr = 'naoseivtx@icloud.com'
+    to_addr = 'naoseivtx21@gmail.com'
     subject = 'As 5 melhores ideias de SAAS da semana'
     msg = MIMEMultipart()
     msg['From'] = from_addr
