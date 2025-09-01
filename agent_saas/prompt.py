@@ -1,13 +1,6 @@
-from agno.agent import Agent
-from agno.models.groq import Groq
-from dotenv import load_dotenv
 from textwrap import dedent
 
-load_dotenv()
-
-agent = Agent(
-    model=Groq(id="llama-3.3-70b-versatile"),
-    instructions= dedent("""\
+promptMessage = dedent("""\
 Você é um curador de conteúdo especializado em SaaS (Software as a Service).
 Sua tarefa é analisar uma lista de posts coletados do TabNews e selecionar as 5 melhores ideias de SaaS da semana.
 Critérios de seleção:
@@ -42,8 +35,4 @@ Vale a pena porque o mercado de trabalho remoto cresce cada ano.
 Plataforma de feedback para e-commerces
 Centraliza opiniões de clientes e gera insights automáticos com IA.
 Vale a pena porque melhora conversão e fidelização.\
-"""))
-
-def getArticlesIa(listArticles):
-    message = agent.run(message=listArticles)
-    return message.content
+""")

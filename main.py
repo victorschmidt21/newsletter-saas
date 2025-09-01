@@ -1,38 +1,29 @@
-from typing import Union
-from agent_basic import getArticlesIa
-from fastapi import FastAPI
-import requests
-app = FastAPI()
+from send_email import sendEmails
+from agent_template.agent import getTemplate
+from agent_saas.agent import getArticlesIa 
+from articles import getArticles
+import schedule
+import time
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
-
-@app.get("/articles")
-def getArticles():
-    response = requests.get("https://www.tabnews.com.br/api/v1/contents?per_page=100&strategy=new")
-    response2 = requests.get("https://www.tabnews.com.br/api/v1/contents?per_page=100&strategy=new&page=2")
-    data = response.json()
-    data2 = response2.json()
-    data.extend(data2)
-
-    articlesFilter = list(filter(filterTitle, data))
-    articlesTeste = []
+def articles():
+    print("Passou aqui em!")
+    articlesFilter = getArticles()
+    articlesTeste = []   
     for i in articlesFilter:
         articlesTeste.append(i['title'])
     sentence = "\n".join(articlesTeste)
     articles = getArticlesIa(sentence)
-    return articles
+    template = getTemplate(articles)
+    sendEmails(template)
+    return "Email enviado com sucesso"
+
+schedule.every(1).monday.at("19:15").do(articles)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
-def filterTitle(article):
-    chave = 'pitch'
-    title = article['title']
-    return chave in title.lower()
+
+
     
