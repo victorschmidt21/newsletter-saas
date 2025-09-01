@@ -3,7 +3,7 @@ import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
-
+from emails import getEmails
 load_dotenv()
 from_addr = os.getenv("SMTP_USERNAME")
 smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com")
@@ -14,7 +14,7 @@ smtp_password = os.getenv("SMTP_PASSWORD")
 
 def sendEmails(body):
     
-    to_addr = 'naoseivtx21@gmail.com'
+    to_addr = getEmails()
     subject = 'As 5 melhores ideias de SAAS da semana'
     msg = MIMEMultipart()
     msg['From'] = from_addr
@@ -30,9 +30,9 @@ def sendEmails(body):
     server.ehlo()
     server.login(smtp_username, smtp_password)
     try:
-        server.sendmail(from_addr, to_addr, msg.as_string())
+        server.sendmail(from_addr, to_addr.split(','), msg.as_string())
     except ValueError:
-        print(ValueError)
+        print(f'erro: {ValueError}')
     finally:
         server.quit()
     return

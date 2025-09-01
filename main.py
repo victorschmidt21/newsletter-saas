@@ -16,7 +16,6 @@ def articles():
     sendEmails(template)
     return "Email enviado com sucesso"
 
-# schedule.every(1).monday.at("19:15").do(articles)
 schedule.every(5).seconds.do(articles)
 
 while True:

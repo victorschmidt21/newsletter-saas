@@ -129,7 +129,7 @@ def render_email(articles):
       </body>
     </html>
     """
-    return dedent(template)
+    return template
 
 def getTemplate(articles):
     return render_email(articles)
