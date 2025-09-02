@@ -4,7 +4,7 @@ class EmailDB:
     def __init__(self):
         pass
 
-    def getEmail(self):
+    def getManyEmails(self):
         emails = []
         response = (
             supabase.table("users")
@@ -15,3 +15,21 @@ class EmailDB:
             emails.append(email['email'])
 
         return emails
+    
+    def createEmail(self, email: str):
+        response = (
+            supabase.table("users")
+            .insert({'email': email})
+            .execute()
+        )
+        print(response)
+        return
+    
+    def getEmail(self, email: str):
+        response = (
+            supabase.table("users")
+            .select('email')
+            .eq("email", email)
+            .execute()
+        )
+        return response.data

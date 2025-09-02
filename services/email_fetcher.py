@@ -6,7 +6,7 @@ class EmailFetcher:
         pass
 
     def getEmails(self):
-        emails = self.emailDB.getEmail()
+        emails = self.emailDB.getEmails()
         emails = ','.join(emails)
         return emails
     
