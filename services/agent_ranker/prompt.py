@@ -1,6 +1,6 @@
 from textwrap import dedent
 
-promptMessage = dedent("""\
+promptMessage = dedent(f"""\
 Você é um curador de conteúdo especializado em SaaS (Software as a Service).
 Sua tarefa é analisar uma lista de posts coletados do TabNews e selecionar as 5 melhores ideias de SaaS da semana.
 Critérios de seleção:
