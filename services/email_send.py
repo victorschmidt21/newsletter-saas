@@ -3,7 +3,7 @@ import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from dotenv import load_dotenv
-from emails import getEmails
+from email_fetcher import getEmails
 load_dotenv()
 from_addr = os.getenv("SMTP_USERNAME")
 smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com")

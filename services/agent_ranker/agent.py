@@ -1,13 +1,13 @@
 from agno.agent import Agent
 from agno.models.groq import Groq
 from dotenv import load_dotenv
-from agent_saas.prompt import promptMessage
+from prompt import promptMessage
 from pydantic import BaseModel
 load_dotenv()
 
 class Idea(BaseModel):
-    title: str
-    description: str
+    slug: str
+    user: str
     
 class Ideas(BaseModel):
     ideas: list[Idea]

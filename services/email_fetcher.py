@@ -1,15 +1,12 @@
-from database import supabase
+from database.email_db import EmailDB
 
-def getEmails():
-    emails = []
-    response = (
-        supabase.table("users")
-        .select("email")
-        .execute()
-    )
-    for email in response.data:
-        emails.append(email['email'])
-        
-    emails = ','.join(emails)
-    print(emails)
-    return emails
+class EmailFetcher:
+    emailDB = EmailDB()
+    def __init__(self):
+        pass
+
+    def getEmails(self):
+        emails = self.emailDB.getEmail()
+        emails = ','.join(emails)
+        return emails
+    

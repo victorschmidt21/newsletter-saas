@@ -17,22 +17,5 @@ Relevância – Focar em SaaS, evitando posts aleatórios que não sejam sobre s
 Formato da resposta:
 
 Liste apenas 5 ideias.
-
-Para cada uma, escreva em até 3 frases:
-
-Título da ideia
-
-Resumo curto da ideia
-
-Por que vale a pena? (em 1 frase)
-
-Exemplo de saída:
-
-SaaS para gestão de freelancers
-Ajuda empresas a contratar, gerenciar e pagar freelancers de forma simples.
-Vale a pena porque o mercado de trabalho remoto cresce cada ano.
-
-Plataforma de feedback para e-commerces
-Centraliza opiniões de clientes e gera insights automáticos com IA.
-Vale a pena porque melhora conversão e fidelização.\
+\
 """)
